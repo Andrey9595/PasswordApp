@@ -1,4 +1,4 @@
-package ru.anb.passwordapp
+package ru.anb.passwordapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
