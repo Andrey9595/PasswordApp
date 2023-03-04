@@ -1,5 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">PasswordApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="signin">Sign in</string>
+    <string name="firstname">First name</string>
+    <string name="lastname">Last name</string>
+    <string name="email">Email</string>
+    <string name="login">Log in</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome back</string>
+    <string name="password">Password</string>
+    <string name="btnlogin">Login</string>
 </resources>
