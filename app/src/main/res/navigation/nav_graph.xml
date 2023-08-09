@@ -13,10 +13,25 @@
         <action
             android:id="@+id/action_authorizationFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            app:popUpTo="@id/authorizationFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_authorizationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="ru.anb.passwordapp.features.ui.registration.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            app:popUpTo="@id/registrationFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_registrationFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="ru.anb.passwordapp.features.ui.home.HomeFragment"
+        android:label="HomeFragment" />
 </navigation>

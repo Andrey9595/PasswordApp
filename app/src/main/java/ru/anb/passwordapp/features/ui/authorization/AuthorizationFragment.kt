@@ -1,11 +1,11 @@
 package ru.anb.passwordapp.features.ui.authorization
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.anb.passwordapp.R
@@ -20,7 +20,7 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
             FragmentAuthorizationBinding.inflate(inflater, container, false)
         }
 
-    private val viewModel: AuthorizationViewModel by lazy { initViewModel() }
+    private val viewModel: AuthorizationViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,13 +31,14 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
         )
 
         viewModel.authState.observe(viewLifecycleOwner) {
-            if (it is AuthResult.Loading)
-                binding.progressBar.visibility = View.VISIBLE
-            if (it is AuthResult.Error) {
-                binding.progressBar.visibility = View.GONE
-                Toast.makeText(requireContext(), it.e.message.toString(), Toast.LENGTH_LONG).show()
-//            if (it is AuthResult.Success)
-//                findNavController().navigate()
+            when (it) {
+                AuthResult.Loading -> binding.progressBar.visibility = View.VISIBLE
+                is AuthResult.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), it.e.message.toString(), Toast.LENGTH_LONG)
+                        .show()
+                }
+                is AuthResult.Success -> findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
             }
         }
 

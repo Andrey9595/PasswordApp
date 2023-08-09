@@ -13,4 +13,5 @@
     <string name="password">Password</string>
     <string name="check_password">Check Password</string>
     <string name="sign_in">Sign In</string>
+    <string name="home_text">Your application may be here</string>
 </resources>

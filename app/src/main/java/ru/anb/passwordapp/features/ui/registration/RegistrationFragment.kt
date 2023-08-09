@@ -1,21 +1,57 @@
 package ru.anb.passwordapp.features.ui.registration
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.anb.passwordapp.R
+import ru.anb.passwordapp.core.ui.BaseFragment
+import ru.anb.passwordapp.data.AuthResult
+import ru.anb.passwordapp.databinding.FragmentRegistrationBinding
 
 @AndroidEntryPoint
-class RegistrationFragment : Fragment() {
+class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
+    override val bindingInflater: (LayoutInflater, ViewGroup?) -> FragmentRegistrationBinding =
+        { inflater, container ->
+            FragmentRegistrationBinding.inflate(inflater, container, false)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registration, container, false)
+        }
+    private val viewModel: RegistrationViewModel by viewModels()
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val inputList = listOf(
+            binding.signUpEmail,
+            binding.signUpPasswordLayout
+        )
+
+        viewModel.authState.observe(viewLifecycleOwner) {
+            when (it) {
+                AuthResult.Loading -> binding.progressBarRegistration.visibility = View.VISIBLE
+                is AuthResult.Error -> {
+                    binding.progressBarRegistration.visibility = View.GONE
+                    Toast.makeText(requireContext(), it.e.message.toString(), Toast.LENGTH_LONG)
+                        .show()
+                }
+
+                is AuthResult.Success -> findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
+
+            }
+        }
+
+        binding.startSignUp.setOnClickListener {
+            val allValidation = inputList.map { it.isValid() }
+            if (allValidation.all { it }) {
+                viewModel.signUp(
+                    email = binding.signUpEmail.text(),
+                    password = binding.signUpPasswordLayout.text()
+                )
+            }
+        }
     }
 }

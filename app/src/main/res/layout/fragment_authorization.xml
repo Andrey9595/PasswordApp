@@ -14,6 +14,8 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="32dp"
         android:hint="@string/password"
+        app:endIconDrawable="@drawable/baseline_eye"
+        app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/auth_mail">
@@ -22,7 +24,7 @@
             android:id="@+id/password_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text" />
+            android:inputType="textPassword" />
 
     </ru.anb.passwordapp.features.ui.input.PasswordInput>
 
@@ -34,8 +36,8 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="64dp"
         android:hint="@string/email"
-        app:endIconMode="clear_text"
         app:endIconDrawable="@drawable/baseline_clear_24"
+        app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -68,21 +70,21 @@
         app:layout_constraintStart_toEndOf="@+id/sign_in"
         app:layout_constraintTop_toBottomOf="@+id/auth_password" />
 
- <FrameLayout
-     android:id="@+id/progress_bar"
-     android:visibility="gone"
-     android:background="@color/transparent"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     app:layout_constraintTop_toTopOf="parent"
-     app:layout_constraintBottom_toBottomOf="parent"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="parent">
+    <FrameLayout
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-     <ProgressBar
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_gravity="center"/>
- </FrameLayout>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

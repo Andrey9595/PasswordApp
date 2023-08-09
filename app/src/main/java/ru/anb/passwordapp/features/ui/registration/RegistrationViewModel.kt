@@ -1,4 +1,4 @@
-package ru.anb.passwordapp.features.ui.authorization
+package ru.anb.passwordapp.features.ui.registration
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -12,17 +12,17 @@ import ru.anb.passwordapp.domain.AuthRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class AuthorizationViewModel @Inject constructor(private val authRepository: AuthRepository) :
+class RegistrationViewModel @Inject constructor(private val authRepository: AuthRepository) :
     ViewModel() {
 
     private val _authState = MutableLiveData<AuthResult>()
 
     val authState: LiveData<AuthResult> get() = _authState
 
-    fun signIn(email: String, password: String) {
+    fun signUp(email: String, password: String) {
         viewModelScope.launch(Dispatchers.IO) {
             _authState.postValue(AuthResult.Loading)
-            val result = authRepository.signInWithEmailAndPassword(email, password)
+            val result = authRepository.signUpWithEmailAndPassword(email, password)
             _authState.postValue(result)
         }
     }
