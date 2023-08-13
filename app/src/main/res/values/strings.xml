@@ -1,14 +1,11 @@
 <resources>
     <string name="app_name">PasswordApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="auth_error_message">Error</string>
     <string name="login_error">Email is incorrect</string>
     <string name="name_error">Name should be at list 2 signs</string>
     <string name="password_error_same">Passwords should be the same</string>
     <string name="password_error">Passwords is incorrect</string>
     <string name="sign_up">Sign Up</string>
-    <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="check_password">Check Password</string>

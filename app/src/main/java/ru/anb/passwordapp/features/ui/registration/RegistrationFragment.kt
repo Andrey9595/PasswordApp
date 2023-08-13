@@ -47,7 +47,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
         binding.startSignUp.setOnClickListener {
             val allValidation = inputList.map { it.isValid() }
             if (allValidation.all { it }) {
-                viewModel.signUp(
+                viewModel.sendCredentials(
                     email = binding.signUpEmail.text(),
                     password = binding.signUpPasswordLayout.text()
                 )

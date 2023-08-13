@@ -38,6 +38,7 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
                     Toast.makeText(requireContext(), it.e.message.toString(), Toast.LENGTH_LONG)
                         .show()
                 }
+
                 is AuthResult.Success -> findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
             }
         }
@@ -46,7 +47,7 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
             val allValidation = inputList.map { it.isValid() }
 
             if (allValidation.all { it }) {
-                viewModel.signIn(
+                viewModel.sendCredentials(
                     email = binding.authMail.text(),
                     password = binding.authPassword.text()
                 )

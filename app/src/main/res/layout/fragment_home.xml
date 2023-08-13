@@ -5,10 +5,10 @@
 
     <TextView
         android:id="@+id/text_home"
-        android:text="@string/home_text"
-        android:textSize="28sp"
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/home_text"
+        android:textSize="28sp" />
 
 </FrameLayout>

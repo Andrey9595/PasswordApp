@@ -13,14 +13,13 @@ class PasswordLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr), Validation {
 
-    private val binding: PasswordLayoutBinding
+    private val binding = PasswordLayoutBinding.inflate(LayoutInflater.from(context), this)
 
     init {
         orientation = VERTICAL
-        binding = PasswordLayoutBinding.inflate(LayoutInflater.from(context), this)
         listOf(binding.passwordEditText, binding.passwordRepeatEditText).forEach {
             it.addTextChangedListener(RegistrationTextWatcher {
-                binding.errorText.visibility = GONE
+                binding.errorText.text = ""
             })
         }
     }
@@ -38,7 +37,7 @@ class PasswordLayout @JvmOverloads constructor(
         with(binding) {
             passwordLayout.isValid()
             passwordRepeatLayout.isValid()
-            return passwordLayout.text() ==passwordRepeatLayout.text()
+            return passwordLayout.text() == passwordRepeatLayout.text()
         }
     }
 

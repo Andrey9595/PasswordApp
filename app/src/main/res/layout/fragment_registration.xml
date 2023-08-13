@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -21,9 +21,9 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="64dp"
             android:hint="@string/email"
-            app:endIconDrawable="@drawable/baseline_clear_24"
-            app:endIconMode="clear_text"
-            android:inputType="text">
+            android:inputType="text"
+            app:endIconDrawable="@drawable/clear"
+            app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/register_login"

@@ -12,7 +12,6 @@ class MailInput @JvmOverloads constructor(
 ) : CustomInputLayout(context, attrs, defStyleAttr) {
     override val errorMessageId = R.string.login_error
 
-
     override fun innerIsValid(): Boolean {
         return Patterns.EMAIL_ADDRESS.matcher(text()).matches()
     }

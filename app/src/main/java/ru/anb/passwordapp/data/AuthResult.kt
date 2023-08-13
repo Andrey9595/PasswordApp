@@ -8,5 +8,5 @@ sealed class AuthResult {
 
     class Error(val e: Exception) : AuthResult()
 
-    object Loading: AuthResult()
+    object Loading : AuthResult()
 }

@@ -7,7 +7,7 @@ abstract class User {
 
     class Base(override val email: String, override val id: String) : User()
 
-    object Empty: User() {
+    object Empty : User() {
         override val email = "Empty"
         override val id = "Empty_id"
     }

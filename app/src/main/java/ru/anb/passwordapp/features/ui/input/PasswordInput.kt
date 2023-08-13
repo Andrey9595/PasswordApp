@@ -16,8 +16,9 @@ class PasswordInput @JvmOverloads constructor(
         return text().matches(Regex(PASSWORD_PATTERN))
     }
 
-    companion object{
+    companion object {
 
-      private const val PASSWORD_PATTERN = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@\$%^&*-]).{8,}\$"
+        private const val PASSWORD_PATTERN =
+            "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@\$%^&*-]).{8,}\$"
     }
 }
