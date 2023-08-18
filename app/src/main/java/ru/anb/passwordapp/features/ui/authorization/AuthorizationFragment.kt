@@ -39,7 +39,9 @@ class AuthorizationFragment : BaseFragment<FragmentAuthorizationBinding>() {
                         .show()
                 }
 
-                is AuthResult.Success -> findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
+                is AuthResult.Success -> {
+                    findNavController().navigate(R.id.action_authorizationFragment_to_homeFragment)
+                }
             }
         }
 

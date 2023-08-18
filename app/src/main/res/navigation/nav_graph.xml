@@ -25,7 +25,7 @@
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            app:popUpTo="@id/registrationFragment"
+            app:popUpTo="@id/authorizationFragment"
             app:popUpToInclusive="true"
             android:id="@+id/action_registrationFragment_to_homeFragment"
             app:destination="@id/homeFragment" />

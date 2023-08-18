@@ -39,8 +39,9 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>() {
                         .show()
                 }
 
-                is AuthResult.Success -> findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
-
+                is AuthResult.Success -> {
+                    findNavController().navigate(R.id.action_registrationFragment_to_homeFragment)
+                }
             }
         }
 

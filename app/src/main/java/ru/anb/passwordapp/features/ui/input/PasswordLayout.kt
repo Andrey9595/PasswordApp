@@ -27,17 +27,11 @@ class PasswordLayout @JvmOverloads constructor(
     private val errorMessageId: Int = R.string.password_error_same
 
     override fun isValid(): Boolean {
-        val isValid = innerIsValid()
-        binding.errorText.text =
-            if (isValid) "" else context.getString(errorMessageId)
-        return isValid
-    }
-
-    private fun innerIsValid(): Boolean {
         with(binding) {
-            passwordLayout.isValid()
-            passwordRepeatLayout.isValid()
-            return passwordLayout.text() == passwordRepeatLayout.text()
+            val isPasswordsEquals = passwordLayout.text() == passwordRepeatLayout.text()
+            errorText.text = if (isPasswordsEquals) "" else context.getString(errorMessageId)
+            val isPasswordsValid = listOf(passwordLayout, passwordRepeatLayout).map { it.isValid() }
+            return isPasswordsValid.all { it } && isPasswordsEquals
         }
     }
 
